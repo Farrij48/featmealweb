@@ -20,9 +20,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./index2.html" class="nav-link">
+                    <a href="{{ route('category.index') }}" class="nav-link">
                         <i class='bx bx-radio-circle'></i>
-                        <p>Dashboard v2</p>
+                        <p>Category</p>
                     </a>
                 </li>
                 <li class="nav-item">

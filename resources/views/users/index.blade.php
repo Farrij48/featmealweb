@@ -59,6 +59,7 @@ Users Data
                             <th>Email</th>
                             <th>Level</th>
                             <th>Gender</th>
+                            <th>NIK</th>
                             <th>Avatar</th>
                             <th>Action</th>
                         </tr>
@@ -71,6 +72,7 @@ Users Data
                             <td>{{$row->email}}</td>
                             <td>{{$row->level}}</td>
                             <td>{{$row->gender}}</td>
+                            <td>{{$row->nik}}</td>
                             <td><img class="img-thumbnail" src="{{ asset('uploads/'.$row->avatar) }}" width="150px" />
                             </td>
                             <td>

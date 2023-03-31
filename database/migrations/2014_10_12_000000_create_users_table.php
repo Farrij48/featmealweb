@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum("level",["admin","chef"]);
             $table->enum("gender",["pria","wanita"]);
             $table->text("address")->nullable();
+            $table->string("nik")->nullable();
             $table->string("phone")->nullable();
             $table->string("avatar")->nullable();
             $table->rememberToken();

@@ -71,6 +71,15 @@ Edit User
                             <span class="error invalid-feedback">{{$errors->first('address')}}</span>
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="nik">NIK</label>
+                            <input type="nik" class="form-control {{$errors->first('nik') ? 'is-invalid' : ''}}"
+                                name="nik" id="nik" placeholder="Enter NIK Number" value="{{ $users->nik }}">
+                            <span class="error invalid-feedback">{{$errors->first('nik')}}</span>
+                        </div>
+
+
                         <div class="form-group">
                             <label for="avatar">Avatar</label>
                             <input type="file" class="form-control {{$errors->first('avatar') ? 'is-invalid' : ''}}"
