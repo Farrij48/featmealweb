@@ -33,7 +33,7 @@ Category Page
                                 {{ $row-> name }}
                             </td>
                             <td>
-                                <img alt="" class="img-thumbnail" src="{{ asset('uploads/'.row->thumbnail) }}"
+                                <img alt="" class="img-thumbnail" src="{{ asset('uploads/'.$row->thumbnail) }}"
                                     width="150px">
                             </td>
                             <td>-</td>
