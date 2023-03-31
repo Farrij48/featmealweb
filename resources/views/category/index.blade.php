@@ -12,6 +12,8 @@ Category Page
             </div>
             <div class="card-body table-responsive">
                 @include('alert.success')
+                <a href="{{ route('category.create') }}" class="btn btn-primary">Create</a>
+                <hr>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
