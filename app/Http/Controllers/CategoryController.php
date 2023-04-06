@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Validator;
+use Illuminate\Support\Facades\Storage as FacadesStorage;
+use Validator ;
 use Storage;
 
 class CategoryController extends Controller
@@ -25,9 +26,7 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // ---------------------------- FUNGSI INSERT DATA CATEGORY ----------------------------------//
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -72,9 +71,9 @@ class CategoryController extends Controller
         return view('category.edit',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
+    //-------------------- FUNGSI UPDATE DATA CATEGORY ----------------------------------------//
+
     public function update(Request $request, string $id)
     {
         $dataCategory = Category::findOrFail($id);
@@ -106,13 +105,52 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with('status','Category berhasil Di Update');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
+    //---------------------- FUNGSI TRASH DATA CATEGORY -----------------------------------------------//
     public function destroy(string $id)
     {
         $dataCategory = Category::findOrFail($id);
         $dataCategory->delete();
         return redirect()->back()->with('status','Category Berhasil Dibuang');
+    }
+
+    public function trash()
+    {
+        $data['category'] = Category::onlyTrashed()->paginate(5);
+        return view('category.trash',$data);
+    }
+
+
+    //------------------------- FUNGSI RESTORE DATA CATEGORY ---------------------------------------------//
+    public function restore($id)
+    {
+        $category = Category::withTrashed()->findOrFail($id);
+        if($category->trashed())
+        {
+            $category->restore();
+        }
+
+        else
+        {
+            return redirect()->route('category.index')->with('status','Category Tidak Ditemukan');
+        }
+
+        return redirect()->route('category.index')->with('status','Category Berhasil Di Restore');
+    }
+
+    //------------------ FUNGSI DELETE PERMANEN DATA CATEGORY --------------------------------------------//
+    public function deletePermanent($id)
+    {
+        $category = Category::withTrashed()->findOrFail($id);
+        if(!$category->trashed())
+        {
+            return redirect()->route('category.index')->with('status','Tidak Bisa Delete Permanent');
+        }
+        else
+        {
+            $category->forceDelete();
+            Storage::disk('upload')->delete($category->thumbnail);
+            return redirect()->route('category.index')->with('status','Category Berhasil Dihapus Permanent');
+        }
     }
 }
