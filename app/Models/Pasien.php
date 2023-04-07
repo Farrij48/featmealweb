@@ -9,7 +9,19 @@ class Pasien extends Model
 {
     use HasFactory;
 
+    public $table = "kelasonline.pasien";
+
     protected $fillable = [
-        'email','password','name','status','gender','phone','nik','address','gejala','avatar'
+        'email',
+        'password',
+        'name',
+        'status',
+        'gender',
+        'phone',
+        'nik',
+        'address',
+        'gejala',
+        'diagnosis',
+        'avatar'
     ];
 }

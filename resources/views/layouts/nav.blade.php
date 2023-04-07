@@ -26,9 +26,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./index3.html" class="nav-link">
+                    <a href="{{ route('pasien.index') }}" class="nav-link">
                         <i class='bx bx-radio-circle'></i>
-                        <p>Dashboard v3</p>
+                        <p>Pasien</p>
                     </a>
                 </li>
             </ul>
