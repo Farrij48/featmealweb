@@ -31,6 +31,12 @@
                         <p>Pasien</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('resep.index') }}" class="nav-link">
+                        <i class='bx bx-radio-circle'></i>
+                        <p>Resep</p>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">

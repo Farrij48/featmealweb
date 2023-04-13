@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PasienController;
 use App\Models\Category;
+use App\Http\Controllers\ResepController;
 
 Route::get('/', function () {
     return redirect()-> route('login');
@@ -39,4 +40,6 @@ Route::resource('category',CategoryController::class);
 //------------- ROUTE PASIEN CONTROLLERS ---------------------//
 Route::post('pasien/{pasien}/resetpassword',[PasienController::class,'resetpassword'])->name('pasien.resetpassword');
 Route::resource('pasien',PasienController::class);
+
+Route::resource('resep',ResepController::class);
 ?>

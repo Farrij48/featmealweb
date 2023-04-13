@@ -22,13 +22,6 @@ Create Category
                         </div>
 
 
-
-
-
-
-
-
-
                         <div class="form-group">
                             <label for="thumbnail">Thumbnail</label>
                             <input type="file" class="form-control {{$errors->first('thumbnail') ? 'is-invalid' : ''}}"
