@@ -5,12 +5,46 @@ Resep Page
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="card card-primary">
+        <div class="card card-success">
             <div class="card-header">
                 <h3>Data Resep</h3>
             </div>
             <div class="card-body table-responsive">
+                @include('alert.success')
+
+                @if(Request::get('keyword'))
+                <a href="{{ route('resep.index') }}" class="btn btn-primary">Back</a>
+                @else
                 <a href="{{ route('resep.create') }}" class="btn btn-success">Tambah</a>
+                @endif
+
+                <hr />
+
+                <form method="get" action="{{ route('resep.index') }}">
+                    <div class="row">
+                        <div class="col-2">
+                            <b>Search Resep</b>
+                        </div>
+
+                        <div class="col-6">
+                            <input type="text" class="form-control" value="{{ Request::get('keyword') }}" id="keyword"
+                                name="keyword">
+                        </div>
+
+                        <div class="col-1">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+
+                        <div class="col-3">
+                            <a class="btn bg-gradient-success" href="{{ route('resep.index') }}">Published</a>
+                            <a class="btn btn-outline-success" href="{{ route('resep.trash') }}">Trash</a>
+                        </div>
+                    </div>
+                </form>
+
+
                 <hr />
                 <table class="table table-bordered">
                     <thead>
@@ -27,20 +61,28 @@ Resep Page
                         @foreach($resep as $row)
                         <tr>
                             <td>{{ $loop->iteration + ($resep->perPage() * ($resep->currentPage() -1) ) }}</td>
-                            <td>{{ $row->category->name }}</td>
-                            <td>{{ $row->user->name }}</td>
+                            <td>{{ $row->category->name ?? 'None' }}</td>
+                            <td>{{ $row->user->name  ?? 'None'}}</td>
                             <td>{{ $row->title }}</td>
                             <td>
                                 <img src="{{ asset('uploads/'.$row->thumbnail) }}" width="100px" class="img-thumbnail">
                             </td>
-                            <td>-</td>
+                            <td>
+                                <a href="{{ route('resep.edit',[$row->id]) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form class="d-inline" action="{{ route('resep.destroy',[$row->id]) }}" method="post"
+                                    onsubmit="return confirm ('Hapus Resep Ke Trash ?')">
+                                    @csrf
+                                    {{ method_field('DELETE') }}
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Trash">
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="card-footer">
-                {{ $resep->links() }}
+                {{ $resep->appends(Request::all())->links() }}
             </div>
         </div>
     </div>

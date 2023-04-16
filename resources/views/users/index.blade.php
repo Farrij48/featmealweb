@@ -16,7 +16,7 @@ Users Data
 
                 @if(Request::get('keyword'))
 
-                <a href="{{ route('users.index') }}" class="btn btn-success">Back</a>
+                <a href="{{ route('users.index') }}" class="btn btn-primary">Back</a>
 
                 @else
                 <a href="{{ route('users.create') }}" class="btn btn-success">Tambah</a>
@@ -77,12 +77,12 @@ Users Data
                             </td>
                             <td>
                                 <a href="{{ route('users.edit',[$row->id]) }}" class="btn btn-info btn-sm">Edit</a>
-                                <form class="d-inline" action="{{ route('users.destroy',[$row->id]) }}" method="post"
+                                <!-- <form class="d-inline" action="{{ route('users.destroy',[$row->id]) }}" method="post"
                                     onsubmit="return confirm ('Yakin Ingin Hapus ?')">
                                     @csrf
                                     {{ method_field('DELETE') }}
                                     <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
-                                </form>
+                                </form> -->
                             </td>
                         </tr>
                         @endforeach

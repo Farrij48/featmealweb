@@ -49,6 +49,7 @@ class UserController extends Controller
             'gender' => 'required',
             'phone' => 'required|digits_between:10,12',
             'address' => 'required|max:255',
+            'nik' => 'required|max:20',
             'avatar' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 

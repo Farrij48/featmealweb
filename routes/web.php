@@ -12,6 +12,10 @@ Route::get('/', function () {
     return redirect()-> route('login');
 });
 
+Route::get('/daftar', [RegisterController::class, 'index']);
+Route::post('/daftar', [RegisterController::class, 'store']);
+
+
 Route::get('/register', function () {
     return view('auth.register');
 });
@@ -41,5 +45,8 @@ Route::resource('category',CategoryController::class);
 Route::post('pasien/{pasien}/resetpassword',[PasienController::class,'resetpassword'])->name('pasien.resetpassword');
 Route::resource('pasien',PasienController::class);
 
+Route::get('resep/trash',[ResepController::class,'trash'])->name('resep.trash');
+Route::get('resep/{id}/restore',[ResepController::class,'restore'])->name('resep.restore');
+Route::delete('resep/{resep}/delete-permanent',[ResepController::class,'deletePermanent'])->name('resep.delete-permanent');
 Route::resource('resep',ResepController::class);
 ?>
