@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PasienController;
 use App\Models\Category;
 use App\Http\Controllers\ResepController;
+
 
 Route::get('/', function () {
     return redirect()-> route('login');
@@ -49,4 +51,7 @@ Route::get('resep/trash',[ResepController::class,'trash'])->name('resep.trash');
 Route::get('resep/{id}/restore',[ResepController::class,'restore'])->name('resep.restore');
 Route::delete('resep/{resep}/delete-permanent',[ResepController::class,'deletePermanent'])->name('resep.delete-permanent');
 Route::resource('resep',ResepController::class);
+
+//--------- ROUTE MODULE PAGE ---------------------------------------//
+Route::get('module',[ModuleController::class,'index'])->name('module');
 ?>

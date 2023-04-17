@@ -40,11 +40,11 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ route('module') }}" class="nav-link">
                 <i class='bx bxs-widget'></i>
                 <p>
-                    Widgets
-                    <span class="right badge badge-danger">New</span>
+                    Modules
+
                 </p>
             </a>
         </li>
