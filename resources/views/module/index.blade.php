@@ -8,8 +8,7 @@ Halaman Detail Resep
     <div class="col-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3>Module Detail Resep</h3>
-                <h4>Chef - {{ Auth::user()->name }}</h4>
+                <h3>Module Resep</h3>
             </div>
             <div class="card-body table-responsive">
                 <table class="table table-bordered">
@@ -34,7 +33,8 @@ Halaman Detail Resep
                                 <img src="{{ asset('uploads/'.$row->thumbnail) }}" class="img-thumbnail" width="150px">
                             </td>
                             <th>
-                                -
+                                <a href="{{ route('module.detail',[$row->id]) }}" class="btn btn-info btn-sm">Detail
+                                    Resep</a>
                             </th>
                         </tr>
                         @endforeach

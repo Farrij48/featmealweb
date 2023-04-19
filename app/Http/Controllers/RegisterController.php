@@ -12,7 +12,7 @@ class RegisterController extends Controller
      */
     public function index()
     {
-        return view('daftar');
+        return view('signup');
     }
 
     /**

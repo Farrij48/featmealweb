@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use App\Http\Controllers\ResepController;
 
@@ -14,8 +15,9 @@ Route::get('/', function () {
     return redirect()-> route('login');
 });
 
-Route::get('/daftar', [RegisterController::class, 'index']);
-Route::post('/daftar', [RegisterController::class, 'store']);
+
+Route::get('/signup', [App\Http\Controllers\RegisterController::class, 'index'])->name('signup');
+Route::post('/signup', [App\Http\Controllers\RegisterController::class, 'store'])->name('signup');
 
 
 Route::get('/register', function () {
@@ -54,4 +56,9 @@ Route::resource('resep',ResepController::class);
 
 //--------- ROUTE MODULE PAGE ---------------------------------------//
 Route::get('module',[ModuleController::class,'index'])->name('module');
+Route::get('module/{id}/detail',[ModuleController::class,'detail'])->name('module.detail');
+Route::get('module/{module}/create',[ModuleController::class,'create'])->name('module.create');
+Route::post('module/store',[ModuleController::class,'store'])->name('module.store');
+Route::get('module/{module}/edit',[ModuleController::class,'edit'])->name('module.edit');
+Route::put('module/{module}/update',[ModuleController::class,'update'])->name('module.update');
 ?>
