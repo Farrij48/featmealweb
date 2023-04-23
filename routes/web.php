@@ -61,4 +61,5 @@ Route::get('module/{module}/create',[ModuleController::class,'create'])->name('m
 Route::post('module/store',[ModuleController::class,'store'])->name('module.store');
 Route::get('module/{module}/edit',[ModuleController::class,'edit'])->name('module.edit');
 Route::put('module/{module}/update',[ModuleController::class,'update'])->name('module.update');
+Route::get('module/{module}/download',[ModuleController::class,'download'])->name('module.download');
 ?>

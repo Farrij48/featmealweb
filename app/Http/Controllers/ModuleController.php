@@ -36,7 +36,7 @@ class ModuleController extends Controller
         //---------- ATURAN FORM VALIDASI UPLOAD MODULE -----------------//
         $standartRule = [
             'title' =>'required|max:50',
-            'description' =>'required|max:250',
+            'description' =>'required',
             'module_type' =>'required',
         ];
         if($request->get('module_type')=="file")
@@ -143,5 +143,12 @@ class ModuleController extends Controller
         $dataModule->update($input);
         $resep_id = $request->get('resep_id');
         return redirect()->route('module.detail',[$resep_id])->with('status','Module Berhasil Di Edit');
+    }
+
+    public function download($id)
+    {
+        $module = Module::findOrFail($id);
+        $filePath = env('UPLOAD_PATH')."/".$module->document;
+        return response()->download($filePath);
     }
 }

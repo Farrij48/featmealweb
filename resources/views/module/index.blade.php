@@ -6,9 +6,9 @@ Halaman Detail Resep
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="card card-primary">
+        <div class="card card-success">
             <div class="card-header">
-                <h3>Module Resep</h3>
+                <h3>Module Data Resep</h3>
             </div>
             <div class="card-body table-responsive">
                 <table class="table table-bordered">

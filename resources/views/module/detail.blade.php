@@ -34,7 +34,17 @@ Module Page - {{ $resep->title }}
                                 @if($row->module_type == "file") / {{ $row->file_type}}
                                 @endif
                             </td>
-                            <td></td>
+                            <td>
+                                @if($row->module_type == "file")
+                                <a href="{{ route('module.download',[$row->id]) }}"
+                                    class="btn btn-info btn-sm">Download</a>
+                                @else
+                                <iframe width="200" height="100" src="https://www.youtube.com/embed/{{ $row->youtube }}"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('module.edit',[$row->id]) }}" class="btn btn-info btn-sm">Edit</a>
                             </td>
