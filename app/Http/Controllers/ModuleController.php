@@ -85,7 +85,7 @@ class ModuleController extends Controller
         $dataModule = Module::findOrFail($id);
         $standartRule = [
             'title' =>'required|max:50',
-            'description' =>'required|max:250',
+            'description' =>'required',
             'module_type' =>'required',
         ];
         if($request->get('module_type')=="file")
@@ -129,7 +129,7 @@ class ModuleController extends Controller
             }
         }
 
-        if($request->get('module_type')== "youtube")
+        if($request->get('module_type') == "youtube")
         {
             $input['document'] = "";
             $input['file_type'] = "";
@@ -150,5 +150,22 @@ class ModuleController extends Controller
         $module = Module::findOrFail($id);
         $filePath = env('UPLOAD_PATH')."/".$module->document;
         return response()->download($filePath);
+    }
+
+    public function show($id)
+    {
+        $data['module'] = Module::findOrFail($id);
+        return view('module.show',$data);
+    }
+
+    public function destroy($id)
+    {
+        $module = Module::findOrFail($id);
+        if($module->module_type == "file")
+        {
+            Storage::disk('upload')->delete($module->document);
+        }
+        $module->delete();
+        return redirect()->route('module.detail',[$module->resep_id])->with('status','Module Berhasil Dihapus');
     }
 }

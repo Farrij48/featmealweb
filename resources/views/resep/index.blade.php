@@ -75,6 +75,7 @@ Resep Page
                                     {{ method_field('DELETE') }}
                                     <input type="submit" class="btn btn-danger btn-sm" value="Trash">
                                 </form>
+                                <a href="{{ route('resep.show',[$row->id]) }}" class="btn btn-primary btn-sm">Show</a>
                             </td>
                         </tr>
                         @endforeach

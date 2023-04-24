@@ -47,6 +47,13 @@ Module Page - {{ $resep->title }}
                             </td>
                             <td>
                                 <a href="{{ route('module.edit',[$row->id]) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="{{ route('module.show',[$row->id]) }}" class="btn btn-warning btn-sm">Show</a>
+                                <form class="d-inline" action="{{ route('module.destroy',[$row->id]) }}" method="post"
+                                    onsubmit="return confirm('Hapus item ini ?')">
+                                    @csrf
+                                    {{ method_field('DELETE') }}
+                                    <input type="submit" class="ntn ntn-danger btn-sm" value="Delete">
+                                </form>
                             </td>
                         </tr>
                         @endforeach

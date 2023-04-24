@@ -52,6 +52,7 @@ Route::resource('pasien',PasienController::class);
 Route::get('resep/trash',[ResepController::class,'trash'])->name('resep.trash');
 Route::get('resep/{id}/restore',[ResepController::class,'restore'])->name('resep.restore');
 Route::delete('resep/{resep}/delete-permanent',[ResepController::class,'deletePermanent'])->name('resep.delete-permanent');
+Route::get('resep/{resep}/download',[ResepController::class,'download'])->name('resep.download');
 Route::resource('resep',ResepController::class);
 
 //--------- ROUTE MODULE PAGE ---------------------------------------//
@@ -62,4 +63,6 @@ Route::post('module/store',[ModuleController::class,'store'])->name('module.stor
 Route::get('module/{module}/edit',[ModuleController::class,'edit'])->name('module.edit');
 Route::put('module/{module}/update',[ModuleController::class,'update'])->name('module.update');
 Route::get('module/{module}/download',[ModuleController::class,'download'])->name('module.download');
+Route::get('module/{module}/show',[ModuleController::class,'show'])->name('module.show');
+Route::delete('module/{module}/destroy',[ModuleController::class,'delstroy'])->name('module.destroy');
 ?>

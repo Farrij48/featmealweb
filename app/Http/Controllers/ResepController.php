@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Resep;
 use App\Models\Category;
+use App\Models\Module;
 use App\Models\User;
 use Validator;
 use Storage;
@@ -68,7 +69,9 @@ class ResepController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data['resep'] = Resep::findOrFail($id);
+        $data['module'] = Module::where('resep_id',$id)->orderBy('order','asc')->get();
+        return view('resep.show',$data);
     }
 
     /**
@@ -164,5 +167,13 @@ class ResepController extends Controller
             Storage::disk('upload')->delete($resep->thumbnail);
             return redirect()->route('resep.index')->with('status','Resep Berhasil Dihapus');
         }
+    }
+
+    public function download($id)
+    {
+        $module = Module::findOrFail($id);
+        $filePath = env('UPLOAD_PATH').'/'.$module->document;
+        return response()->download($filePath);
+        
     }
 }
