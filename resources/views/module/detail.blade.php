@@ -52,7 +52,7 @@ Module Page - {{ $resep->title }}
                                     onsubmit="return confirm('Hapus item ini ?')">
                                     @csrf
                                     {{ method_field('DELETE') }}
-                                    <input type="submit" class="ntn ntn-danger btn-sm" value="Delete">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete">
                                 </form>
                             </td>
                         </tr>

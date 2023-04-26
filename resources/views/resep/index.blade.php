@@ -11,12 +11,21 @@ Resep Page
             </div>
             <div class="card-body table-responsive">
                 @include('alert.success')
-
                 @if(Request::get('keyword'))
+
                 <a href="{{ route('resep.index') }}" class="btn btn-primary">Back</a>
                 @else
                 <a href="{{ route('resep.create') }}" class="btn btn-success">Tambah</a>
+                <!-- @if (Auth::user()->level == 'chef')
+                <a href="{{ route('resep.create') }}"></a>
+                @endif -->
                 @endif
+
+                <!-- @if (Auth::user()->level == 'chef')
+                <a href="{{ route('resep.create') }}">Tambah</a>
+                @else
+                <a href="{{ route('resep.create') }}" disabled>Tambah</a>
+                @endif   -->
 
                 <hr />
 

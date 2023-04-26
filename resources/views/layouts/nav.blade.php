@@ -4,6 +4,18 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+        <li class="nav-item">
+            <a href="{{ route('home') }}" class="nav-link">
+                <i class='nav-icon fas fa-home'></i>
+                <p>
+                    Home
+
+                </p>
+            </a>
+        </li>
+
+        @if(Auth::user()->level == "admin")
         <li class="nav-item ">
             <a href="#" class="nav-link">
                 <i class='bx bxs-home'></i>
@@ -39,6 +51,10 @@
                 </li>
             </ul>
         </li>
+        @endif
+
+
+        @if(Auth::user()->level == "chef")
         <li class="nav-item">
             <a href="{{ route('module') }}" class="nav-link">
                 <i class='bx bxs-widget'></i>
@@ -48,6 +64,7 @@
                 </p>
             </a>
         </li>
+        @endif
 
         <li class="nav-item">
             <form action="{{ route('logout') }}" method="post" id="logout">

@@ -6,7 +6,7 @@ Detail Resep - {{ $resep->title }}
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="card card-primary">
+        <div class="card card-success">
             <div class="card-header">
                 <h3>Detail Resep - {{ $resep->title }}</h3>
             </div>
@@ -55,7 +55,7 @@ Detail Resep - {{ $resep->title }}
 
 <div class="row">
     <div class="col-12">
-        <div class="card card-primary">
+        <div class="card card-success">
             <div class="card-header">
                 <h3>Detail Module Resep - {{ $resep->title }}</h3>
             </div>
@@ -64,7 +64,7 @@ Detail Resep - {{ $resep->title }}
                     <thead>
                         <tr>
                             <th>Title</th>
-                            <th>Description</th>
+                            <th>Ingridients</th>
                             <th>Module Type</th>
                             <th>Module</th>
                             <th>View</th>

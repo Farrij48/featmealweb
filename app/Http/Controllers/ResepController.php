@@ -9,12 +9,12 @@ use App\Models\Module;
 use App\Models\User;
 use Validator;
 use Storage;
+use Illuminate\Support\Facades\Gate;
 
 class ResepController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
+
     public function index(Request $request)
     {
         $filterKeyword = $request->get('keyword');

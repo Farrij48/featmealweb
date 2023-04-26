@@ -31,7 +31,8 @@ Route::match(["GET","POST"],"/register",function(){
 })->name("login");
 
 
-
+Route::group(['middleware' => ['auth']],function(){
+    
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -65,4 +66,5 @@ Route::put('module/{module}/update',[ModuleController::class,'update'])->name('m
 Route::get('module/{module}/download',[ModuleController::class,'download'])->name('module.download');
 Route::get('module/{module}/show',[ModuleController::class,'show'])->name('module.show');
 Route::delete('module/{module}/destroy',[ModuleController::class,'delstroy'])->name('module.destroy');
+});
 ?>

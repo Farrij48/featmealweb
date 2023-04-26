@@ -50,7 +50,6 @@
                                     <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Sign in</h4>
 
                                     <div class="row mt-3">
-
                                         <div class="col-2 text-center px-1">
                                             <a class="btn btn-link px-3" href="javascript:;">
 

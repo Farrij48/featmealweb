@@ -8,12 +8,22 @@ use Illuminate\Support\Facades\Storage as FacadesStorage;
 use Validator;
 use Storage;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Gate;
+
+use function PHPUnit\Framework\returnSelf;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //----------- PENGECEKAN USER UNTUK AKSES MENU -----------//
+    public function __construct()
+    {
+        $this->middleware(function($request,$next)
+        {
+            if(Gate::allows('manage-users')) return $next($request);
+            abort(403);
+        });
+    }
+
     public function index(Request $request)
     {
         $filterKeyword = $request->get('keyword');

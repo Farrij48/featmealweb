@@ -5,12 +5,21 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use Validator ;
 use Storage;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+  
+     //----------- PENGECEKAN USER UNTUK AKSES MENU -----------//
+     public function __construct()
+     {
+         $this->middleware(function($request,$next)
+         {
+             if(Gate::allows('manage-category')) return $next($request);
+             abort(403);
+         });
+     }
+
     public function index()
     {
         $data['category'] = Category::paginate(5);

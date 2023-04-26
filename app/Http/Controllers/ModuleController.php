@@ -7,9 +7,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Storage;
+use Illuminate\Support\Facades\Gate;
 
 class ModuleController extends Controller
 {
+    public function __construct()
+     {
+         $this->middleware(function($request,$next)
+         {
+             if(Gate::allows('manage-module')) return $next($request);
+             abort(403);
+         });
+     }
+
     public function index()
     {
         $data['resep'] = Resep::where('user_id',Auth::user()->id)->paginate(5);

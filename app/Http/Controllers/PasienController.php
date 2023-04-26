@@ -6,12 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Pasien;
 use Validator;
 use Storage;
+use Illuminate\Support\Facades\Gate;
 
 class PasienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //----------- PENGECEKAN USER UNTUK AKSES MENU -----------//
+    public function __construct()
+    {
+        $this->middleware(function($request,$next)
+        {
+            if(Gate::allows('manage-pasien')) return $next($request);
+            abort(403);
+        });
+    }
+
     public function index(Request $request)
     {
         $filterKeyword = $request->get('keyword');
