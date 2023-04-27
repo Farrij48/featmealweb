@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "@eonasdan/tempus-dominus": "^6.2.10",
+        "bootstrap-icons": "^1.10.5",
+        "boxicons": "^2.1.4",
         "font-awesome": "^4.7.0"
     }
 }

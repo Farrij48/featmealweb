@@ -7,7 +7,7 @@
 
         <li class="nav-item">
             <a href="{{ route('home') }}" class="nav-link">
-                <i class='nav-icon fas fa-home'></i>
+                <i class='bx bxs-home'></i>
                 <p>
                     Home
 
@@ -18,7 +18,7 @@
         @if(Auth::user()->level == "admin")
         <li class="nav-item ">
             <a href="#" class="nav-link">
-                <i class='bx bxs-home'></i>
+                <i class='bx bxs-widget'></i>
                 <p>
                     Master
                     <!-- <i class="right fas fa-angle-left"></i> -->
@@ -70,7 +70,8 @@
             <form action="{{ route('logout') }}" method="post" id="logout">
                 @csrf
                 <a class="nav-link" href="#" onclick="document.getElementById('logout').submit()">
-                    <i class='bx bx-log-out'></i> Logout
+                    <i class='bx bx-log-out'></i>
+                    <p>Sign Out</p>
                 </a>
             </form>
         </li>

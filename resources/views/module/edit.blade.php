@@ -35,7 +35,7 @@ Edit Module Resep
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">Ingridients</label>
                             <textarea name="description" id="description"
                                 class="form-control {{$errors->first('description') ? 'is-invalid' : ''}}">{{ $module->description }}</textarea>
                             <span class="error invalid-feedback">{{$errors->first('description')}}</span>
