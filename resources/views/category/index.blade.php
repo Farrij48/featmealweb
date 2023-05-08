@@ -12,7 +12,9 @@ Category Page
             </div>
             <div class="card-body table-responsive">
                 @include('alert.success')
+                @if(Auth::user()->level == "admin")
                 <a href="{{ route('category.create') }}" class="btn btn-success">Tambah</a>
+                @endif
                 <hr>
                 <div class="row">
                     <div class="col-3">
@@ -20,6 +22,7 @@ Category Page
                         <a class="btn btn-outline-success" href="{{ route ('category.trash') }}">Trash</a>
                     </div>
                 </div>
+
                 <hr />
                 <table class="table table-bordered">
                     <thead>
@@ -44,6 +47,7 @@ Category Page
                                     width="150px">
                             </td>
                             <td>
+                                @if(Auth::user()->level == "chef")
                                 <a href="{{ route ('category.edit',[$row->id]) }}" class="btn btn-info btn-sm">Edit</a>
                                 <form action="{{ route('category.destroy',[$row->id]) }}" method="post"
                                     onsubmit="return confirm('Move Category To Trash')" class="d-inline">
@@ -51,6 +55,7 @@ Category Page
                                     {{ method_field('DELETE') }}
                                     <input type="submit" class="btn btn-danger btn-sm" value="Trash">
                                 </form>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

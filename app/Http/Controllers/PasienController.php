@@ -54,6 +54,9 @@ class PasienController extends Controller
             'address'=>'required',
             'gejala'=>'required',
             'diagnosis'=>'required',
+            'berat_badan'=>'required',
+            'tinggi_badan'=>'required',
+            'usia'=>'required',
             'avatar'=>'required|image|mimes:jpeg,jpg,png|max:2048'
         ]);
         if($validator->fails())
@@ -109,6 +112,9 @@ class PasienController extends Controller
             'address'=>'required',
             'gejala'=>'required',
             'diagnosis'=>'required',
+            'berat_badan'=>'required',
+            'tinggi_badan'=>'required',
+            'usia'=>'required',
             'avatar'=>'sometimes|nullable|image|mimes:jpeg,jpg,png|max:2048'
         ]);
         if($validator->fails())
@@ -135,9 +141,6 @@ class PasienController extends Controller
         return redirect()->route('pasien.index')->with('status','Pasien Berhasil Diupdate');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $dataPasien = Pasien::findOrFail($id);

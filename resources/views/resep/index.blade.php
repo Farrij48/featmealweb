@@ -15,10 +15,9 @@ Resep Page
 
                 <a href="{{ route('resep.index') }}" class="btn btn-primary">Back</a>
                 @else
+                @if(Auth::user()->level == "chef")
                 <a href="{{ route('resep.create') }}" class="btn btn-success">Tambah</a>
-                <!-- @if (Auth::user()->level == 'chef')
-                <a href="{{ route('resep.create') }}"></a>
-                @endif -->
+                @endif
                 @endif
 
                 <!-- @if (Auth::user()->level == 'chef')
@@ -77,6 +76,7 @@ Resep Page
                                 <img src="{{ asset('uploads/'.$row->thumbnail) }}" width="100px" class="img-thumbnail">
                             </td>
                             <td>
+                                @if(Auth::user()->level == "chef")
                                 <a href="{{ route('resep.edit',[$row->id]) }}" class="btn btn-warning btn-sm">Edit</a>
                                 <form class="d-inline" action="{{ route('resep.destroy',[$row->id]) }}" method="post"
                                     onsubmit="return confirm ('Hapus Resep Ke Trash ?')">
@@ -84,6 +84,7 @@ Resep Page
                                     {{ method_field('DELETE') }}
                                     <input type="submit" class="btn btn-danger btn-sm" value="Trash">
                                 </form>
+                                @endif
                                 <a href="{{ route('resep.show',[$row->id]) }}" class="btn btn-primary btn-sm">Show</a>
                             </td>
                         </tr>

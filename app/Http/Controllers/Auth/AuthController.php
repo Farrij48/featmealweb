@@ -26,9 +26,9 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function registration()
+    public function register()
     {
-        return view('auth.registration');
+        return view('auth.register');
     }
       
     /**
@@ -45,7 +45,7 @@ class AuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('home')
                         ->withSuccess('You have Successfully loggedin');
         }
   
@@ -57,10 +57,14 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function postRegistration(Request $request)
+    public function postRegister(Request $request)
     {  
         $request->validate([
             'name' => 'required',
+            'address' => 'required',
+            'nik' => 'required',
+            'phone' => 'required',
+            'gender' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
@@ -68,7 +72,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
          
-        return redirect("dashboard")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("home")->withSuccess('Great! You have Successfully loggedin');
     }
     
     /**
@@ -76,7 +80,7 @@ class AuthController extends Controller
      *
      * @return response()
      */
-    public function dashboard()
+    public function home()
     {
         if(Auth::check()){
             return view('home');
@@ -95,6 +99,10 @@ class AuthController extends Controller
       return User::create([
         'name' => $data['name'],
         'email' => $data['email'],
+        'address' => $data['address'],
+        'nik' => $data['nik'],
+        'phone' => $data['phone'],
+        'gender' => $data['gender'],
         'password' => Hash::make($data['password'])
       ]);
     }

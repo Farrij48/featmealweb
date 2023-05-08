@@ -99,8 +99,9 @@
                                     <h4 class="font-weight-bolder">Sign Up</h4>
                                     <p class="mb-0">Enter your email and password to register</p>
                                 </div>
+                                <!-- FORM FIELD INPUTAN -->
                                 <div class="card-body">
-                                    <form action="{{ route('register.post') }}" method="POST" role="form">
+                                    <form action="{{ route('register.custom') }}" method="POST" ">
                                         @csrf
                                         <div class="input-group input-group-outline mb-3">
                                             <label for="name" class="form-label">Name</label>
@@ -111,12 +112,23 @@
                                             @endif
                                         </div>
                                         <div class="input-group input-group-outline mb-3">
-                                            <label for="email_address" class="form-label">Email</label>
+                                            <label for="email" class="form-label">Email</label>
                                             <input type="email" id="email_address" name="email" class="form-control"
                                                 required autofocus>
                                             @if ($errors->has('email'))
                                             <span class="text-danger">{{ $errors->first('email') }}</span>
                                             @endif
+                                        </div>
+
+                                        <div class="input-group input-group-outline mb-3">
+                                           <label for="level" class="form-label" ></label>
+                                           <select name="level" id="level" class="form-control">
+                                           <option >Pilih Level</option>
+                                           <option value="admin">Admin</option>
+                                           <option value="chef">Chef</option>
+                                           <option value="ahli_gizi">Ahli Gizi</option>
+                                        </select>
+                                        <span class="error invalid-feedback">{{$errors->first('level') }}</span>
                                         </div>
 
                                         <div class="input-group input-group-outline mb-3">
@@ -127,6 +139,8 @@
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                             @endif
                                         </div>
+                                        
+                                        
                                         <div class="form-check form-check-info text-start ps-0">
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="flexCheckDefault" checked>

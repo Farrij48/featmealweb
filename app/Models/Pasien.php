@@ -22,6 +22,9 @@ class Pasien extends Model
         'address',
         'gejala',
         'diagnosis',
+        'berat_badan',
+        'tinggi_badan',
+        'usia',
         'avatar'
     ];
 }

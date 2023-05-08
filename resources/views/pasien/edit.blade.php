@@ -87,6 +87,31 @@ Edit Pasien
                         </div>
 
                         <div class="form-group">
+                            <label for="berat_badan">Berat Badan</label>
+                            <input type="text"
+                                class="form-control {{$errors->first('berat_badan') ? 'is-invalid' : ''}}"
+                                name="berat_badan" id="berat_badan" placeholder="Masukkan Berat Badan"
+                                value="{{ $pasien->berat_badan }}">
+                            <span class="error invalid-feedback">{{$errors->first('berat_badan')}}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tinggi_badan">Tinggi Badan</label>
+                            <input type="text"
+                                class="form-control {{$errors->first('tinggi_badan') ? 'is-invalid' : ''}}"
+                                name="tinggi_badan" id="tinggi_badan" placeholder="Masukkan Tinggi Badan"
+                                value="{{ $pasien->tinggi_badan }}">
+                            <span class="error invalid-feedback">{{$errors->first('tinggi_badan')}}</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usia">Usia</label>
+                            <input type="text" class="form-control {{$errors->first('usia') ? 'is-invalid' : ''}}"
+                                name="usia" id="usia" placeholder="Masukkan Usia" value="{{ $pasien->usia }}">
+                            <span class="error invalid-feedback">{{$errors->first('usia')}}</span>
+                        </div>
+
+                        <div class="form-group">
                             <label for="avatar">Avatar</label>
                             <div class="input-group">
                                 <img src="{{ asset('uploads/'.$pasien->avatar) }}" class="img-thumbnail" width="150px">

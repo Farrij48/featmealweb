@@ -49,27 +49,55 @@
                         <p>Resep</p>
                     </a>
                 </li>
+
             </ul>
         </li>
         @endif
 
 
         @if(Auth::user()->level == "chef")
-        <li class="nav-item">
-            <a href="{{ route('module') }}" class="nav-link">
+        <li class="nav-item ">
+            <a href="#" class="nav-link">
                 <i class='bx bxs-widget'></i>
                 <p>
-                    Modules
-
+                    Master
+                    <!-- <i class="right fas fa-angle-left"></i> -->
                 </p>
             </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('module') }}" class="nav-link">
+                        <i class='bx bx-radio-circle'></i>
+                        <p>
+                            Modules
+
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('resep.index') }}" class="nav-link">
+                        <i class='bx bx-radio-circle'></i>
+                        <p>Resep</p>
+                    </a>
+                </li>
+            </ul>
         </li>
         @endif
 
+        <li class="nav-item ">
+            <a href="#" class="nav-link">
+                <i class='bx bxs-widget'></i>
+                <p>
+                    Profil
+                    <!-- <i class="right fas fa-angle-left"></i> -->
+                </p>
+            </a>
+            
+
         <li class="nav-item">
-            <form action="{{ route('logout') }}" method="post" id="logout">
+            <form action="{{ route('signout') }}"  id="signout">
                 @csrf
-                <a class="nav-link" href="#" onclick="document.getElementById('logout').submit()">
+                <a class="nav-link" href="#" onclick="document.getElementById('signout').submit()">
                     <i class='bx bx-log-out'></i>
                     <p>Sign Out</p>
                 </a>

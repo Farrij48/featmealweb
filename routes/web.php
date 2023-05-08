@@ -9,26 +9,26 @@ use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use App\Http\Controllers\ResepController;
+use App\Http\Controllers\CustomAuthController;
 
 
-Route::get('/', function () {
-    return redirect()-> route('login');
+
+//  LOGIN REGISTER //
+
+Route::get('/registration', function () {
+    return view('auth.registration');
 });
 
-
-Route::get('/signup', [App\Http\Controllers\RegisterController::class, 'index'])->name('signup');
-Route::post('/signup', [App\Http\Controllers\RegisterController::class, 'store'])->name('signup');
-
-
-Route::get('/register', function () {
-    return view('auth.register');
+Route::get('/login', function () {
+    return view('auth.login');
 });
 
-Auth::routes();
-
-Route::match(["GET","POST"],"/register",function(){
-    return redirect("/login");
-})->name("login");
+Route::get('home', [CustomAuthController::class, 'home']); 
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom'); 
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 
 Route::group(['middleware' => ['auth']],function(){

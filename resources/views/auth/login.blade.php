@@ -70,7 +70,7 @@
                             </div>
                             <div class="card-body">
 
-                                <form action="{{route('login')}}" method="post">
+                                <form action="{{route('login.custom')}}" method="post">
                                     @csrf
                                     <div class="input-group input-group-outline my-3">
                                         <input type="email" name="email" id="email" class="form-control"
@@ -104,7 +104,7 @@
                                     </div>
                                     <p class="mt-4 text-sm text-center">
                                         Don't have an account?
-                                        <a href="/register" class="text-primary text-gradient font-weight-bold">Sign
+                                        <a href="/registration" class="text-primary text-gradient font-weight-bold">Sign
                                             up</a>
                                     </p>
                                 </form>

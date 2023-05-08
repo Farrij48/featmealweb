@@ -47,6 +47,9 @@ Pasien Page
                             <th>Phone</th>
                             <th>Gejala</th>
                             <th>Diagnosis</th>
+                            <th>BB</th>
+                            <th>TB</th>
+                            <th>Usia</th>
                             <th>Avatar</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -62,6 +65,9 @@ Pasien Page
                             <td>{{ $row->phone }}</td>
                             <td>{{ $row->gejala }}</td>
                             <td>{{ $row->diagnosis }}</td>
+                            <td>{{ $row->berat_badan }}</td>
+                            <td>{{ $row->tinggi_badan }}</td>
+                            <td>{{ $row->usia }}</td>
                             <td><img src="{{ asset('uploads/'.$row->avatar) }}" width="70px" class="thumbnail" /></td>
                             <td>{{ $row->status}}</td>
                             <td>
