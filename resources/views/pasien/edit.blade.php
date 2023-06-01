@@ -114,7 +114,7 @@ Edit Pasien
                         <div class="form-group">
                             <label for="avatar">Avatar</label>
                             <div class="input-group">
-                                <img src="{{ asset('uploads/'.$pasien->avatar) }}" class="img-thumbnail" width="150px">
+                                <img src="{{ asset('public/uploads/'.$pasien->avatar) }}" class="img-thumbnail" width="150px">
                             </div>
                         </div>
 

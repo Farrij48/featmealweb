@@ -73,7 +73,7 @@ Resep Page
                             <td>{{ $row->user->name  ?? 'None'}}</td>
                             <td>{{ $row->title }}</td>
                             <td>
-                                <img src="{{ asset('uploads/'.$row->thumbnail) }}" width="100px" class="img-thumbnail">
+                                <img src="{{ asset('public/uploads/'.$row->thumbnail) }}" width="100px" class="img-thumbnail">
                             </td>
                             <td>
                                 @if(Auth::user()->level == "chef")

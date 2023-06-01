@@ -27,7 +27,7 @@ Edit Category
                         <div class="form-group">
                             <label for="thumbnail">Thumbnail</label>
                             <div class="input-group">
-                                <img src="{{ asset('uploads/'.$category->thumbnail) }}" class="img-thumbnail"
+                                <img src="{{ asset('public/uploads/'.$category->thumbnail) }}" class="img-thumbnail"
                                     width="150px" />
                             </div>
                         </div>

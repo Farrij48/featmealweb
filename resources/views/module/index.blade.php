@@ -30,7 +30,7 @@ Halaman Detail Resep
                             <td>{{ $row->user->name }}</td>
                             <td>{{ $row->title }}</td>
                             <td>
-                                <img src="{{ asset('uploads/'.$row->thumbnail) }}" class="img-thumbnail" width="150px">
+                                <img src="{{ asset('public/uploads/'.$row->thumbnail) }}" class="img-thumbnail" width="150px">
                             </td>
                             <th>
                                 <a href="{{ route('module.detail',[$row->id]) }}" class="btn btn-info btn-sm">Detail

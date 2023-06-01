@@ -43,10 +43,16 @@
                         <p>Pasien</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="{{ route('resep.index') }}" class="nav-link">
                         <i class='bx bx-radio-circle'></i>
                         <p>Resep</p>
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a href="/fullcalendar" class="nav-link">
+                        <i class='bx bx-radio-circle'></i>
+                        <p>Jadwal Konsultasi</p>
                     </a>
                 </li>
 
@@ -85,7 +91,7 @@
         @endif
 
         <li class="nav-item ">
-            <a href="#" class="nav-link">
+            <a href="/profile" class="nav-link">
                 <i class='bx bxs-widget'></i>
                 <p>
                     Profil

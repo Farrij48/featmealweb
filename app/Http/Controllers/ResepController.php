@@ -10,6 +10,7 @@ use App\Models\User;
 use Validator;
 use Storage;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class ResepController extends Controller
 {
@@ -19,18 +20,20 @@ class ResepController extends Controller
     {
         $filterKeyword = $request->get('keyword');
         $data['resep'] = Resep::paginate(5);
+        $user = User::findOrFail(Auth::id());
         if($filterKeyword)
         {
             $data['resep'] = Resep::where('title','LIKE',"%$filterKeyword%")->paginate(5);
         }
-        return view('resep.index',$data);
+        return view('resep.index',$data,compact('user'));
     }
 
     public function create()
     {
         $data['category'] = Category::all();
         $data['users'] = User::where('level','chef')->get();
-        return view('resep.create',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('resep.create',$data,compact('user'));
     }
 
     /**
@@ -71,7 +74,8 @@ class ResepController extends Controller
     {
         $data['resep'] = Resep::findOrFail($id);
         $data['module'] = Module::where('resep_id',$id)->orderBy('order','asc')->get();
-        return view('resep.show',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('resep.show',$data,compact('user'));
     }
 
     /**
@@ -82,7 +86,8 @@ class ResepController extends Controller
         $data['resep'] = Resep::findOrFail($id);
         $data['category'] = Category::all();
         $data['users'] = User::where('level','chef')->get();
-        return view('resep.edit',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('resep.edit',$data,compact('user'));
     }
 
     /**
@@ -135,7 +140,8 @@ class ResepController extends Controller
     public function trash()
     {
         $data['resep'] = Resep::onlyTrashed()->paginate(5);
-        return view('resep.trash',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('resep.trash',$data,compact('user'));
     }
 
     public function restore($id)

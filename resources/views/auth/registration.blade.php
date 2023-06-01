@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('backend/assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('backend/assets/img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/logofitmeal.png') }}">
     <title>
         FeatMeal Admin Web
     </title>
@@ -124,9 +124,9 @@
                                            <label for="level" class="form-label" ></label>
                                            <select name="level" id="level" class="form-control">
                                            <option >Pilih Level</option>
-                                           <option value="admin">Admin</option>
+                                           <option value="admin">Ahli Gizi</option>
                                            <option value="chef">Chef</option>
-                                           <option value="ahli_gizi">Ahli Gizi</option>
+                                           
                                         </select>
                                         <span class="error invalid-feedback">{{$errors->first('level') }}</span>
                                         </div>

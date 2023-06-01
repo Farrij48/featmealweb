@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('backend/assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ asset('backend/assets/img/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/logofitmeal.png') }}">
     <title>
         Featmeal Admin Web
     </title>
@@ -118,13 +118,13 @@
                     <div class="row align-items-center justify-content-lg-between">
                         <div class="col-12 col-md-6 my-auto">
                             <div class="copyright text-center text-sm text-white text-lg-start">
-                                © <script>
+                                 <script>
                                 document.write(new Date().getFullYear())
                                 </script>,
-                                made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                                Web <i class="fa fa-heart" aria-hidden="true"></i> 
                                 <a href="https://www.creative-tim.com" class="font-weight-bold text-white"
-                                    target="_blank">Creative Tim</a>
-                                for a better web.
+                                    target="_blank">RSUD RA Basoeni</a>
+                                
                             </div>
                         </div>
                         <!-- <div class="col-12 col-md-6">

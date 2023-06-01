@@ -90,7 +90,7 @@ Edit User
                         <div class="form-group">
                             <label for="avatar">Avatar</label>
                             <div class="input-group">
-                                <img class="img-thumbnail" src="{{ asset('uploads/'.$users->avatar) }}" width="150px">
+                                <img class="img-thumbnail" src="{{ asset('public/uploads/'.$users->avatar) }}" width="150px">
                             </div>
                         </div>
 

@@ -42,7 +42,7 @@ Detail Resep - {{ $resep->title }}
                     <tr>
                         <td>Thumbnail</td>
                         <td>:</td>
-                        <td><img src="{{ asset('uploads/'.$resep->thumbnail) }}" class="img-thumbnail" width="150"></td>
+                        <td><img src="{{ asset('public/uploads/'.$resep->thumbnail) }}" class="img-thumbnail" width="150"></td>
                     </tr>
                 </table>
             </div>

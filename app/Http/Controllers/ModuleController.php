@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 use App\Models\Resep;
 use App\Models\Module;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Storage;
 use Illuminate\Support\Facades\Gate;
+
 
 class ModuleController extends Controller
 {
@@ -23,7 +25,8 @@ class ModuleController extends Controller
     public function index()
     {
         $data['resep'] = Resep::where('user_id',Auth::user()->id)->paginate(5);
-        return view('module.index',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('module.index',$data,compact('user'));
     }
 
     public function detail($id)
@@ -31,14 +34,16 @@ class ModuleController extends Controller
         $data['resep_id'] = $id;
         $data['resep'] = Resep::findOrFail($id);
         $data['module'] = Module::where('resep_id',$id)->orderBy('order','asc')->paginate(5);
-        return view('module.detail',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('module.detail',$data,compact('user'));
     }
 
     public function create($id)
     {
         $data['resep_id'] = $id;
         $data['resep'] = Resep::findOrFail($id);
-        return view('module.create',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('module.create',$data,compact('user'));
     }
 
     public function store(Request $request)
@@ -87,7 +92,8 @@ class ModuleController extends Controller
     public function edit($id)
     {
         $data['module'] = Module::findOrFail($id);
-        return view('module.edit',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('module.edit',$data,compact('user'));
     }
 
     public function update(Request $request,$id)
@@ -165,7 +171,8 @@ class ModuleController extends Controller
     public function show($id)
     {
         $data['module'] = Module::findOrFail($id);
-        return view('module.show',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('module.show',$data,compact('user'));
     }
 
     public function destroy($id)

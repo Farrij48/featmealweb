@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\User;
 use Validator ;
 use Storage;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class CategoryController extends Controller
 {
@@ -23,7 +26,8 @@ class CategoryController extends Controller
     public function index()
     {
         $data['category'] = Category::paginate(5);
-        return view('category.index',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('category.index',$data,compact('user'));
     }
 
     /**
@@ -31,7 +35,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.create');
+        $user = User::findOrFail(Auth::id());
+        return view('category.create',compact('user'));
     }
 
     // ---------------------------- FUNGSI INSERT DATA CATEGORY ----------------------------------//
@@ -76,7 +81,8 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $data['category'] = Category::findOrFail($id);
-        return view('category.edit',$data);
+        $user = User::findOrFail(Auth::id());
+        return view('category.edit',$data,compact('user'));
     }
 
    

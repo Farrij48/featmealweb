@@ -75,7 +75,7 @@ Update Resep
                         <div class="form-group">
                             <label for="thumbnail">Thumbnail</label>
                             <div class="input-group">
-                                <img src="{{ asset('uploads/'.$resep->thumbnail) }}" width="150px">
+                                <img src="{{ asset('public/uploads/'.$resep->thumbnail) }}" width="150px">
                             </div>
                         </div>
 

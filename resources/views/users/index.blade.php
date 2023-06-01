@@ -19,7 +19,7 @@ Users Data
                 <a href="{{ route('users.index') }}" class="btn btn-primary">Back</a>
 
                 @else
-                <a href="{{ route('users.create') }}" class="btn btn-success">Tambah</a>
+                <!-- <a href="{{ route('users.create') }}" class="btn btn-success">Tambah</a> -->
                 @endif
 
                 <hr />
@@ -61,7 +61,7 @@ Users Data
                             <th>Gender</th>
                             <th>NIK</th>
                             <th>Avatar</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -73,10 +73,10 @@ Users Data
                             <td>{{$row->level}}</td>
                             <td>{{$row->gender}}</td>
                             <td>{{$row->nik}}</td>
-                            <td><img class="img-thumbnail" src="{{ asset('uploads/'.$row->avatar) }}" width="150px" />
+                            <td><img class="img-thumbnail" src="{{ asset('avatar/'.$user->avatar) }}" width="150px" />
                             </td>
                             <td>
-                                <a href="{{ route('users.edit',[$row->id]) }}" class="btn btn-info btn-sm">Edit</a>
+                                <!-- <a href="{{ route('users.edit',[$row->id]) }}" class="btn btn-info btn-sm">Edit</a> -->
                                 <!-- <form class="d-inline" action="{{ route('users.destroy',[$row->id]) }}" method="post"
                                     onsubmit="return confirm ('Yakin Ingin Hapus ?')">
                                     @csrf

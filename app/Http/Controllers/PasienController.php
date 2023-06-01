@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pasien;
+use App\Models\User;
 use Validator;
 use Storage;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class PasienController extends Controller
 {
@@ -24,12 +26,13 @@ class PasienController extends Controller
     {
         $filterKeyword = $request->get('keyword');
         $data['pasien'] = Pasien::paginate(5);
+        $user = User::findOrFail(Auth::id());
 
         if($filterKeyword)
         {
             $data['pasien'] = Pasien::where('name','LIKE',"%$filterKeyword%")->paginate(5);
         }
-        return view('pasien.index',$data);
+        return view('pasien.index',$data,compact('user'));
     }
 
     /**
@@ -37,7 +40,8 @@ class PasienController extends Controller
      */
     public function create()
     {
-        return view('pasien.create');
+        $user = User::findOrFail(Auth::id());
+        return view('pasien.create',compact('user'));
     }
 
     /**
@@ -94,7 +98,9 @@ class PasienController extends Controller
     public function edit(string $id)
     {
         $data['pasien'] = Pasien::findOrFail($id);
-        return view('pasien.edit',$data);
+        $user = User::findOrFail(Auth::id());
+
+        return view('pasien.edit',$data,compact('user'));
     }
 
     /**
@@ -130,7 +136,7 @@ class PasienController extends Controller
                 Storage::disk('upload')->delete($dataPasien->avatar);
                 $avatarFile = $request->file('avatar');
                 $extension = $avatarFile->getClientOriginalExtension();
-                $fileName = "student-avatar/".date('YmdHis').".".$extension;
+                $fileName = "pasien-avatar/".date('YmdHis').".".$extension;
                 $uploadPath = env('UPLOAD_PATH')."/pasien-avatar";
                 $request->file('avatar')->move($uploadPath,$fileName);
                 $input['avatar'] = $fileName;

@@ -36,7 +36,7 @@ Trash Page
                             <td>{{ $row->user->name }}</td>
                             <td>{{ $row->title }}</td>
                             <td>
-                                <img src="{{ asset('uploads/'.$row->thumbnail) }}" width="100px" class="img-thumbnail">
+                                <img src="{{ asset('public/uploads/'.$row->thumbnail) }}" width="100px" class="img-thumbnail">
                             </td>
                             <td>
                                 <a href="{{ route('resep.restore',[$row->id]) }}" class="btn btn-success sm">Restore</a>

@@ -9,6 +9,9 @@ use Validator;
 use Storage;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -29,12 +32,13 @@ class UserController extends Controller
         $filterKeyword = $request->get('keyword');
         $filterLevel = $request->get('level');
         $data['users'] = User::paginate(5);
+        $user = User::findOrFail(Auth::id());
         if($filterKeyword)
         {
             $data['users'] = User::where('name','LIKE',"%$filterKeyword%")
             ->where('level',$filterLevel)->paginate(5);
         }
-        return view('users.index',$data);
+        return view('users.index',$data,compact('user'));
     }
 
     /**
@@ -42,7 +46,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $user = User::findOrFail(Auth::id());
+        return view('users.create',compact('user'));
     }
 
     /**

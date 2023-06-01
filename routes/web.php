@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
@@ -8,9 +9,18 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Category;
+use App\Models\User;
 use App\Http\Controllers\ResepController;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\FullCalenderController;
 
+
+
+
+// UPDATE PROFILE //
+Auth::routes();
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+Route::patch('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
 
 //  LOGIN REGISTER //
@@ -19,7 +29,11 @@ Route::get('/registration', function () {
     return view('auth.registration');
 });
 
-Route::get('/login', function () {
+//  Route::get('/profile', function () {
+//      return view('profile.edit');
+// });
+
+Route::get('/', function () {
     return view('auth.login');
 });
 
@@ -65,6 +79,15 @@ Route::get('module/{module}/edit',[ModuleController::class,'edit'])->name('modul
 Route::put('module/{module}/update',[ModuleController::class,'update'])->name('module.update');
 Route::get('module/{module}/download',[ModuleController::class,'download'])->name('module.download');
 Route::get('module/{module}/show',[ModuleController::class,'show'])->name('module.show');
-Route::delete('module/{module}/destroy',[ModuleController::class,'delstroy'])->name('module.destroy');
+Route::delete('module/{module}/destroy',[ModuleController::class,'destroy'])->name('module.destroy');
 });
+
+//JADWAL KONSULTASI//
+Route::get('/fullcalendar', function () {
+    return view('fullcalendar');
+});
+Route::get('fullcalender', [FullCalenderController::class, 'index']);
+Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
+
+
 ?>

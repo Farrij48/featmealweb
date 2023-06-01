@@ -18,8 +18,8 @@ Category Page
                 <hr>
                 <div class="row">
                     <div class="col-3">
-                        <a class="btn bg-gradient-success" href="{{ route ('category.index') }}">Published</a>
-                        <a class="btn btn-outline-success" href="{{ route ('category.trash') }}">Trash</a>
+                        <!-- <a class="btn bg-gradient-success" href="{{ route ('category.index') }}">Published</a>
+                        <a class="btn btn-outline-success" href="{{ route ('category.trash') }}">Trash</a> -->
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@ Category Page
                             <th>No</th>
                             <th>Name</th>
                             <th>Thumbnail</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -43,11 +43,11 @@ Category Page
                                 {{ $row-> name }}
                             </td>
                             <td>
-                                <img alt="" class="img-thumbnail" src="{{ asset('uploads/'.$row->thumbnail) }}"
+                                <img alt="" class="img-thumbnail" src="{{ asset('public/uploads/'.$row->thumbnail) }}"
                                     width="150px">
                             </td>
                             <td>
-                                @if(Auth::user()->level == "chef")
+                                @if(Auth::user()->level == "admin")
                                 <a href="{{ route ('category.edit',[$row->id]) }}" class="btn btn-info btn-sm">Edit</a>
                                 <form action="{{ route('category.destroy',[$row->id]) }}" method="post"
                                     onsubmit="return confirm('Move Category To Trash')" class="d-inline">

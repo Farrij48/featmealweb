@@ -23,6 +23,9 @@ return new class extends Migration
             $table->text("address")->nullable();
             $table->string("gejala")->nullable();
             $table->string("diagnosis")->nullable();
+            $table->integer('berat_badan');
+            $table->integer('tinggi_badan');
+            $table->integer('usia');
             $table->string('avatar');
             $table->timestamps();
         });
